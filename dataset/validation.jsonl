@@ -1,3 +1,4 @@
 {"schemaVersion":1,"license":"CC-BY-4.0","context":"我今天想吃","answer":"早餐","padding":[{"syllable":"ㄗㄠ","tone":3},{"syllable":"ㄘㄢ","tone":1}],"difficulty":1}
 {"schemaVersion":1,"license":"CC-BY-4.0","context":"這個模型的","answer":"驗證集","padding":[{"syllable":"ㄧㄢ","tone":4},{"syllable":"ㄓㄥ","tone":4},{"syllable":"ㄐㄧ","tone":2}],"difficulty":3}
 {"schemaVersion":1,"license":"CC-BY-4.0","context":"我愛吃","answer":"西瓜","padding":[{"syllable":"ㄒㄧ","tone":1},{"syllable":"ㄍㄨㄚ","tone":1}],"difficulty":1}
+{"schemaVersion":1,"license":"CC-BY-4.0","context":"我愛吃","answer":"小玉西瓜","padding":[{"syllable":"ㄒㄧㄠ","tone":3},{"syllable":"ㄩ","tone":4},{"syllable":"ㄒㄧ","tone":1},{"syllable":"ㄍㄨㄚ","tone":1}],"difficulty":1}
