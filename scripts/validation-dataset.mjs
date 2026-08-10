@@ -131,22 +131,22 @@ function decodeUtf8WithoutBom(bytes, label) {
 }
 
 export function validateDatasetBytes(bytes) {
-  const text = decodeUtf8WithoutBom(bytes, "validation.jsonl");
+  const text = decodeUtf8WithoutBom(bytes, "dataset/validation.jsonl");
   if (text === "") return { text, lines: [], samples: [] };
-  if (text.includes("\r")) fail("validation.jsonl 必須使用 LF，不得包含 CR");
-  if (!text.endsWith("\n")) fail("validation.jsonl 最後一行必須以 LF 結束");
+  if (text.includes("\r")) fail("dataset/validation.jsonl 必須使用 LF，不得包含 CR");
+  if (!text.endsWith("\n")) fail("dataset/validation.jsonl 最後一行必須以 LF 結束");
 
   const lines = text.slice(0, -1).split("\n");
   const samples = lines.map((line, index) => {
-    if (line.length === 0) fail(`validation.jsonl 第 ${index + 1} 行不得為空白行`);
+    if (line.length === 0) fail(`dataset/validation.jsonl 第 ${index + 1} 行不得為空白行`);
     let parsed;
     try {
       parsed = JSON.parse(line);
     } catch {
-      fail(`validation.jsonl 第 ${index + 1} 行不是有效 JSON`);
+      fail(`dataset/validation.jsonl 第 ${index + 1} 行不是有效 JSON`);
     }
     const canonical = serializeSample(parsed);
-    if (line !== canonical) fail(`validation.jsonl 第 ${index + 1} 行不是 canonical JSON`);
+    if (line !== canonical) fail(`dataset/validation.jsonl 第 ${index + 1} 行不是 canonical JSON`);
     return parsed;
   });
   return { text, lines, samples };

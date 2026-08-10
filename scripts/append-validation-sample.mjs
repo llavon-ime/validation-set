@@ -2,7 +2,7 @@ import { appendFileSync } from "node:fs";
 import { appendDispatchToDataset } from "./validation-dataset.mjs";
 
 const eventPath = process.env.EVENT_PATH;
-const datasetPath = process.env.DATASET_PATH ?? "validation.jsonl";
+const datasetPath = process.env.DATASET_PATH ?? "dataset/validation.jsonl";
 const commitMessagePath = process.env.COMMIT_MESSAGE_PATH;
 
 if (!eventPath) throw new Error("EVENT_PATH 未設定");

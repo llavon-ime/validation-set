@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
@@ -45,9 +45,15 @@ function writeEvent(directory, event) {
   return path;
 }
 
+function createDatasetPath(directory) {
+  const datasetDirectory = join(directory, "dataset");
+  mkdirSync(datasetDirectory);
+  return join(datasetDirectory, "validation.jsonl");
+}
+
 test("preserves Chinese, Bopomofo, astral characters and emoji as UTF-8", () => {
   const directory = mkdtempSync(join(tmpdir(), "llavon-validation-"));
-  const datasetPath = join(directory, "validation.jsonl");
+  const datasetPath = createDatasetPath(directory);
   const messagePath = join(directory, "commit-message.txt");
   const eventPath = writeEvent(directory, dispatchEvent({
     attribution: { githubId: 12345678, githubLogin: "example-user" },
@@ -72,7 +78,7 @@ test("preserves Chinese, Bopomofo, astral characters and emoji as UTF-8", () => 
 
 test("is idempotent for an identical canonical sample", () => {
   const directory = mkdtempSync(join(tmpdir(), "llavon-validation-"));
-  const datasetPath = join(directory, "validation.jsonl");
+  const datasetPath = createDatasetPath(directory);
   const messagePath = join(directory, "commit-message.txt");
   const eventPath = writeEvent(directory, dispatchEvent());
 

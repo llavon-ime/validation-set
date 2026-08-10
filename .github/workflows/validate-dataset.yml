@@ -3,7 +3,7 @@ name: Validate dataset
 on:
   push:
     paths:
-      - validation.jsonl
+      - dataset/validation.jsonl
       - scripts/**
       - tests/**
       - package.json
@@ -11,7 +11,7 @@ on:
       - .github/workflows/**
   pull_request:
     paths:
-      - validation.jsonl
+      - dataset/validation.jsonl
       - scripts/**
       - tests/**
       - package.json

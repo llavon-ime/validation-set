@@ -4,7 +4,7 @@
 
 ## 資料檔案
 
-所有樣本集中於 [`validation.jsonl`](validation.jsonl)。每一行是一筆獨立 JSON，可逐行串流讀取：
+所有樣本集中於 [`dataset/validation.jsonl`](dataset/validation.jsonl)。每一行是一筆獨立 JSON，可逐行串流讀取：
 
 ```json
 {"schemaVersion":1,"license":"CC-BY-4.0","context":"下班後我想去超市買","answer":"牛奶","padding":[{"syllable":"ㄋㄧㄡ","tone":2},{"syllable":"ㄋㄞ","tone":3}],"difficulty":2}
@@ -26,7 +26,7 @@ Node.js 讀取範例：
 ```js
 import { readFile } from "node:fs/promises";
 
-const text = await readFile("validation.jsonl", "utf8");
+const text = await readFile("dataset/validation.jsonl", "utf8");
 const samples = text.trimEnd().split("\n").filter(Boolean).map(JSON.parse);
 ```
 
@@ -35,13 +35,13 @@ Python 讀取範例：
 ```python
 import json
 
-with open("validation.jsonl", encoding="utf-8") as source:
+with open("dataset/validation.jsonl", encoding="utf-8") as source:
     samples = [json.loads(line) for line in source if line.strip()]
 ```
 
 ## 自動寫入
 
-Cloudflare Worker 以 GitHub App installation token 發送 `append-validation-sample` repository dispatch。Action 會透過同一 concurrency group 依序處理投稿、驗證完整資料集、附加單一 JSONL 行，再建立 commit。
+投稿網站後端以 GitHub App installation token 發送 `append-validation-sample` repository dispatch。Action 會透過同一 concurrency group 依序處理投稿、驗證完整資料集、附加單一 JSONL 行，再建立 commit。
 
 `client_payload` 契約：
 
