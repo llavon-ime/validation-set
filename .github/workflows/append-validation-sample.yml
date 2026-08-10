@@ -1,0 +1,48 @@
+name: Append validation sample
+
+on:
+  repository_dispatch:
+    types: [append-validation-sample]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: validation-jsonl-writer
+  queue: max
+
+jobs:
+  append:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out the latest dataset
+        uses: actions/checkout@v6
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Test Unicode and dataset invariants
+        run: npm test
+
+      - name: Validate and append the dispatched sample
+        id: append
+        env:
+          EVENT_PATH: ${{ github.event_path }}
+          DATASET_PATH: validation.jsonl
+          COMMIT_MESSAGE_PATH: ${{ runner.temp }}/validation-commit-message.txt
+        run: node scripts/append-validation-sample.mjs
+
+      - name: Commit and push the appended line
+        if: steps.append.outputs.changed == 'true'
+        env:
+          COMMIT_MESSAGE_PATH: ${{ runner.temp }}/validation-commit-message.txt
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- validation.jsonl
+          git diff --cached --check
+          git commit --file="$COMMIT_MESSAGE_PATH"
+          git push origin HEAD:main
