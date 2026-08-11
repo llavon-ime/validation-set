@@ -2,3 +2,4 @@
 {"schemaVersion":1,"license":"CC-BY-4.0","context":"這個模型的","answer":"驗證集","padding":[{"syllable":"ㄧㄢ","tone":4},{"syllable":"ㄓㄥ","tone":4},{"syllable":"ㄐㄧ","tone":2}],"difficulty":3}
 {"schemaVersion":1,"license":"CC-BY-4.0","context":"我愛吃","answer":"西瓜","padding":[{"syllable":"ㄒㄧ","tone":1},{"syllable":"ㄍㄨㄚ","tone":1}],"difficulty":1}
 {"schemaVersion":1,"license":"CC-BY-4.0","context":"我愛吃","answer":"小玉西瓜","padding":[{"syllable":"ㄒㄧㄠ","tone":3},{"syllable":"ㄩ","tone":4},{"syllable":"ㄒㄧ","tone":1},{"syllable":"ㄍㄨㄚ","tone":1}],"difficulty":1}
+{"schemaVersion":1,"license":"CC-BY-4.0","context":"你可以","answer":"標他嗎","padding":[{"syllable":"ㄅㄧㄠ","tone":1},{"syllable":"ㄊㄚ","tone":1},{"syllable":"ㄇㄚ","tone":1}],"difficulty":2}
