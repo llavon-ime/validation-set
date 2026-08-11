@@ -86,7 +86,7 @@ export function canonicalizeSample(value) {
   assertExactKeys(value, SAMPLE_KEYS, "sample");
   if (value.schemaVersion !== 1) fail("sample.schemaVersion 必須是 1");
   if (value.license !== "CC-BY-4.0") fail("sample.license 必須是 CC-BY-4.0");
-  assertUnicodeScalarNfc(value.context, "sample.context", 1, 500);
+  assertUnicodeScalarNfc(value.context, "sample.context", 0, 500);
   assertUnicodeScalarNfc(value.answer, "sample.answer", 1, 32);
   if (!Array.isArray(value.padding) || value.padding.length < 1 || value.padding.length > 32) {
     fail("sample.padding 必須包含 1–32 筆注音");

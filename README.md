@@ -14,7 +14,7 @@
 | --- | --- |
 | `schemaVersion` | 格式版本，目前固定為 `1` |
 | `license` | 固定為 `CC-BY-4.0` |
-| `context` | 正確答案之前的文字，1–500 個 Unicode code point |
+| `context` | 正確答案之前的文字，可為空字串，最多 500 個 Unicode code point |
 | `answer` | 唯一預期答案，1–32 個 Unicode code point |
 | `padding` | 與答案逐字對齊的純注音及聲調 |
 | `difficulty` | 整體判讀難度，整數 `1`–`5` |

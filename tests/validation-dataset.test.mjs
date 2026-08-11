@@ -76,6 +76,19 @@ test("preserves Chinese, Bopomofo, astral characters and emoji as UTF-8", () => 
   assert.match(readFileSync(messagePath, "utf8"), /Co-authored-by: example-user/u);
 });
 
+test("accepts and preserves an empty context", () => {
+  const emptyContextSample = { ...sample, context: "" };
+  const directory = mkdtempSync(join(tmpdir(), "llavon-validation-"));
+  const datasetPath = createDatasetPath(directory);
+  const messagePath = join(directory, "commit-message.txt");
+  const eventPath = writeEvent(directory, dispatchEvent({ sample: emptyContextSample }));
+
+  const result = appendDispatchToDataset({ eventPath, datasetPath, commitMessagePath: messagePath });
+
+  assert.equal(result.changed, true);
+  assert.equal(JSON.parse(readFileSync(datasetPath, "utf8").trimEnd()).context, "");
+});
+
 test("is idempotent for an identical canonical sample", () => {
   const directory = mkdtempSync(join(tmpdir(), "llavon-validation-"));
   const datasetPath = createDatasetPath(directory);
