@@ -8,3 +8,4 @@
 {"schemaVersion":1,"license":"CC-BY-4.0","context":"","answer":"你是豬嗎","padding":[{"syllable":"ㄋㄧ","tone":3},{"syllable":"ㄕ","tone":4},{"syllable":"ㄓㄨ","tone":1},{"syllable":"ㄇㄚ","tone":1}],"difficulty":1}
 {"schemaVersion":1,"license":"CC-BY-4.0","context":"早上好中國，","answer":"現在我有冰淇淋","padding":[{"syllable":"ㄒㄧㄢ","tone":4},{"syllable":"ㄗㄞ","tone":4},{"syllable":"ㄨㄛ","tone":3},{"syllable":"ㄧㄡ","tone":3},{"syllable":"ㄅㄧㄥ","tone":1},{"syllable":"ㄑㄧ","tone":2},{"syllable":"ㄌㄧㄣ","tone":2}],"difficulty":1}
 {"schemaVersion":1,"license":"CC-BY-4.0","context":"你可以解釋","answer":"一下嗎","padding":[{"syllable":"ㄧ","tone":2},{"syllable":"ㄒㄧㄚ","tone":4},{"syllable":"ㄇㄚ","tone":5}],"difficulty":1}
+{"schemaVersion":1,"license":"CC-BY-4.0","context":"訓練有點","answer":"眉角的","padding":[{"syllable":"ㄇㄟ","tone":2},{"syllable":"ㄐㄧㄠ","tone":3},{"syllable":"ㄉㄜ","tone":5}],"difficulty":3}
