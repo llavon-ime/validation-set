@@ -33,3 +33,4 @@
 {"schemaVersion":1,"license":"CC-BY-4.0","context":"","answer":"需要配合整句情意來調整","padding":[{"syllable":"ㄒㄩ","tone":1},{"syllable":"ㄧㄠ","tone":4},{"syllable":"ㄆㄟ","tone":4},{"syllable":"ㄏㄜ","tone":2},{"syllable":"ㄓㄥ","tone":3},{"syllable":"ㄐㄩ","tone":4},{"syllable":"ㄑㄧㄥ","tone":2},{"syllable":"ㄧ","tone":4},{"syllable":"ㄌㄞ","tone":2},{"syllable":"ㄊㄧㄠ","tone":2},{"syllable":"ㄓㄥ","tone":3}],"difficulty":2}
 {"schemaVersion":1,"license":"CC-BY-4.0","context":"那改成預設 /target 並且 新增 coca init 功能 能自動產生 toml ","answer":"與","padding":[{"syllable":"ㄩ","tone":3}],"difficulty":3}
 {"schemaVersion":1,"license":"CC-BY-4.0","context":"應該說實際情況是類似這樣，arguments 取得一塊被 malloc 出來的","answer":"指標","padding":[{"syllable":"ㄓ","tone":3},{"syllable":"ㄅㄧㄠ","tone":1}],"difficulty":3}
+{"schemaVersion":1,"license":"CC-BY-4.0","context":"不想全塞在 koka 還有一部分是編譯速度問題，還有 _alloca  我覺得不太漂亮 因為","answer":"涉及","padding":[{"syllable":"ㄕㄜ","tone":4},{"syllable":"ㄐㄧ","tone":2}],"difficulty":2}
