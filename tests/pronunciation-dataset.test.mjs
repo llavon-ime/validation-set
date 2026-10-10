@@ -5,7 +5,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { appendDispatchToDataset, canonicalizeSample, serializeSample, sha256Utf8, parseDispatchEventBytes, validateDatasetBytes } from "../scripts/pronunciation-dataset.mjs";
 import { canonicalizeSample as validateOldSample } from "../scripts/validation-dataset.mjs";
-const sample = { schemaVersion: 1, license: "CC-BY-4.0", kind: "pronunciation", context: "我們準備", answer: "部署",
+const sample = { schemaVersion: 1, license: "CC-BY-4.0", kind: "pronunciation", answer: "部署",
   readings: [[{ syllable: "ㄅㄨ", tone: 4 }], [{ syllable: "ㄕㄨ", tone: 3 }, { syllable: "ㄕㄨ", tone: 4 }]], description: "" };
 function event(value = sample) { return { action: "append-pronunciation-sample", client_payload: {
   submissionId: "0262684d-61eb-4c2b-906f-62d168bcd021", sample: value, payloadSha256: sha256Utf8(serializeSample(value)), attribution: null } }; }

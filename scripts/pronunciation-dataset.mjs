@@ -8,7 +8,7 @@ import {
 
 const encoder = new TextEncoder();
 const fatalDecoder = new TextDecoder("utf-8", { fatal: true });
-const SAMPLE_KEYS = ["schemaVersion", "license", "kind", "context", "answer", "readings", "description"];
+const SAMPLE_KEYS = ["schemaVersion", "license", "kind", "answer", "readings", "description"];
 const PADDING_KEYS = ["syllable", "tone"];
 const PAYLOAD_KEYS = ["submissionId", "sample", "payloadSha256", "attribution"];
 const ATTRIBUTION_KEYS = ["githubId", "githubLogin"];
@@ -78,7 +78,6 @@ function assertPaddingUnit(value, index) {
 export function canonicalizeSample(value) {
   assertExactKeys(value, SAMPLE_KEYS, "sample");
   if (value.schemaVersion !== 1 || value.license !== "CC-BY-4.0" || value.kind !== "pronunciation") fail("sample type/version/license is invalid");
-  assertUnicodeScalarNfc(value.context, "sample.context", 0, 500);
   assertUnicodeScalarNfc(value.answer, "sample.answer", 1, 32);
   assertUnicodeScalarNfc(value.description, "sample.description", 0, 1000);
   if (!/^\p{Script=Han}+$/u.test(value.answer)) fail("sample.answer must contain Han characters only");
@@ -90,7 +89,7 @@ export function canonicalizeSample(value) {
     return valid.sort((a, b) => a.syllable < b.syllable ? -1 : a.syllable > b.syllable ? 1 : a.tone - b.tone);
   });
   if (!readings.some(rs => rs.length > 1)) fail("at least one character needs multiple readings");
-  return { schemaVersion: 1, license: "CC-BY-4.0", kind: "pronunciation", context: value.context,
+  return { schemaVersion: 1, license: "CC-BY-4.0", kind: "pronunciation",
     answer: value.answer, readings, description: value.description };
 }
 

@@ -3,10 +3,9 @@
 保存在既有 `llavon-ime/validation-set` 的 `dataset/pronunciations.jsonl`，與一般驗證集分開。
 
 ```json
-{"schemaVersion":1,"license":"CC-BY-4.0","kind":"pronunciation","context":"","answer":"部署","readings":[[{"syllable":"ㄅㄨ","tone":4}],[{"syllable":"ㄕㄨ","tone":3},{"syllable":"ㄕㄨ","tone":4}]],"description":"署的四聲是口語讀法。"}
+{"schemaVersion":1,"license":"CC-BY-4.0","kind":"pronunciation","answer":"部署","readings":[[{"syllable":"ㄅㄨ","tone":4}],[{"syllable":"ㄕㄨ","tone":3},{"syllable":"ㄕㄨ","tone":4}]],"description":"署的四聲是口語讀法。"}
 ```
 
-- `context`：前文，可空，最多 500 個 Unicode code point。
 - `answer`：本筆標註的漢字，1–32 個 Unicode code point。
 - `readings`：按 `answer` 的 Unicode code point 逐字對齊，每格 1–8 個不重複讀音，至少一格含兩個讀音。注音不含聲調符號；`tone` 以 1–5 表示一、二、三、四、輕聲。不要求出現在既有候選表。
 - `description`：選填說明；未填保存為空字串，最多 1,000 個 Unicode code point，可換行。只供人閱讀，不直接當模型 prompt 或讀音規則執行。
