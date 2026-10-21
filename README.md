@@ -1,6 +1,6 @@
 # 拉風輸入法驗證集
 
-本 repository 保存拉風輸入法模型的公開 validation set，用於比較模型版本、偵測功能退步及分析錯誤。投稿資料一般不直接作為模型訓練資料；本專案亦不保證目前或未來模型在相同語境下必然輸出資料所列答案。
+本 repository 保存拉風輸入法模型的公開 validation set，用於比較模型版本、偵測功能退步及分析錯誤。一般驗證集投稿資料不直接作為模型訓練資料；本專案亦不保證目前或未來模型在相同語境下必然輸出資料所列答案。
 
 ## 資料檔案
 
@@ -91,3 +91,13 @@ npm run validate
 ## 授權
 
 各投稿者保留其投稿內容之權利，並直接依 CC BY 4.0 授權公眾使用。必要姓名標示及法律實體說明請見 [LICENSE](LICENSE) 與 [ATTRIBUTION.md](ATTRIBUTION.md)。
+
+## 人工多讀音訓練資料
+
+現有投稿網站另提供人工多讀音標註，與驗證集分開保存在 [`dataset/pronunciations.jsonl`](dataset/pronunciations.jsonl)。此檔案可用於模型訓練；不改變原 `validation.jsonl` 的用途，也不將其併入訓練資料。
+
+新 event type 為 `append-pronunciation-sample`，由 `append-pronunciation-sample.yml` 驗證、追加、提交。沿用同一 GitHub App、attribution 與 SHA-256 契約，無需額外 secrets。兩個寫入 workflow 共用 `validation-jsonl-writer` concurrency group，以免互相造成 push 衝突。
+
+空白說明保存為空字串。完整相同的 canonical sample 重送不會追加；修改說明會形成另一筆紀錄，不覆寫原始標註。**先部署此 repo 的新 Action，再部署網站的多讀音功能。**
+
+詳細欄位與用途見 [PRONUNCIATIONS.md](PRONUNCIATIONS.md)。
