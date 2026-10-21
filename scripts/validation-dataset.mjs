@@ -23,6 +23,7 @@ const UUID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/iu;
 const SHA256_PATTERN = /^[0-9a-f]{64}$/u;
 const GITHUB_LOGIN_PATTERN = /^[A-Za-z0-9-]{1,39}$/u;
+const ENGLISH_LETTER_PATTERN = /^[A-Za-z]$/u;
 const BOPOMOFO_PATTERN =
   /^[ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙ]?[ㄧㄨㄩ]?[ㄚㄛㄜㄝㄞㄟㄠㄡㄢㄣㄤㄥㄦ]?$/u;
 
@@ -75,10 +76,14 @@ function assertPaddingUnit(value, index) {
   const label = `sample.padding[${index}]`;
   assertExactKeys(value, PADDING_KEYS, label);
   assertUnicodeScalarNfc(value.syllable, `${label}.syllable`, 1, 3);
-  if (!BOPOMOFO_PATTERN.test(value.syllable)) fail(`${label}.syllable 注音格式不正確`);
+  const english = ENGLISH_LETTER_PATTERN.test(value.syllable);
+  if (!english && !BOPOMOFO_PATTERN.test(value.syllable)) {
+    fail(`${label}.syllable 注音或英文標註格式不正確`);
+  }
   if (!Number.isInteger(value.tone) || value.tone < 1 || value.tone > 5) {
     fail(`${label}.tone 必須是 1–5 的整數`);
   }
+  if (english && value.tone !== 1) fail(`${label}.tone 英文標註不可帶聲調`);
   return { syllable: value.syllable, tone: value.tone };
 }
 
@@ -91,7 +96,8 @@ export function canonicalizeSample(value) {
   if (!Array.isArray(value.padding) || value.padding.length < 1 || value.padding.length > 32) {
     fail("sample.padding 必須包含 1–32 筆注音");
   }
-  if (Array.from(value.answer).length !== value.padding.length) {
+  const answerCharacters = Array.from(value.answer);
+  if (answerCharacters.length !== value.padding.length) {
     fail("sample.answer 與 sample.padding 必須逐字對齊");
   }
   if (!Number.isInteger(value.difficulty) || value.difficulty < 1 || value.difficulty > 5) {
@@ -103,7 +109,16 @@ export function canonicalizeSample(value) {
     license: "CC-BY-4.0",
     context: value.context,
     answer: value.answer,
-    padding: value.padding.map(assertPaddingUnit),
+    padding: value.padding.map((unit, index) => {
+      const padding = assertPaddingUnit(unit, index);
+      if (
+        ENGLISH_LETTER_PATTERN.test(padding.syllable) &&
+        padding.syllable !== answerCharacters[index]
+      ) {
+        fail(`sample.padding[${index}] 英文標註必須與答案中的字母相同`);
+      }
+      return padding;
+    }),
     difficulty: value.difficulty,
   };
 }

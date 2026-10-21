@@ -89,6 +89,23 @@ test("accepts and preserves an empty context", () => {
   assert.equal(JSON.parse(readFileSync(datasetPath, "utf8").trimEnd()).context, "");
 });
 
+test("accepts English letters that match the answer with tone 1", () => {
+  const englishSample = {
+    ...sample,
+    answer: "A片",
+    padding: [{ syllable: "A", tone: 1 }, { syllable: "ㄆㄧㄢ", tone: 4 }],
+  };
+  assert.equal(parseDispatchEventBytes(Buffer.from(JSON.stringify(dispatchEvent({ sample: englishSample })))).sample.padding[0].syllable, "A");
+
+  for (const padding of [
+    [{ syllable: "A", tone: 2 }, englishSample.padding[1]],
+    [{ syllable: "B", tone: 1 }, englishSample.padding[1]],
+    [{ syllable: "AB", tone: 1 }, englishSample.padding[1]],
+  ]) {
+    assert.throws(() => serializeSample({ ...englishSample, padding }));
+  }
+});
+
 test("is idempotent for an identical canonical sample", () => {
   const directory = mkdtempSync(join(tmpdir(), "llavon-validation-"));
   const datasetPath = createDatasetPath(directory);
