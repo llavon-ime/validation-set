@@ -41,3 +41,4 @@
 {"schemaVersion":1,"license":"CC-BY-4.0","context":"","answer":"再見","padding":[{"syllable":"ㄗㄞ","tone":4},{"syllable":"ㄐㄧㄢ","tone":4}],"difficulty":1}
 {"schemaVersion":1,"license":"CC-BY-4.0","context":"","answer":"研究所甄試","padding":[{"syllable":"ㄧㄢ","tone":2},{"syllable":"ㄐㄧㄡ","tone":4},{"syllable":"ㄙㄨㄛ","tone":3},{"syllable":"ㄓㄣ","tone":1},{"syllable":"ㄕ","tone":4}],"difficulty":3}
 {"schemaVersion":1,"license":"CC-BY-4.0","context":"","answer":"鰥寡孤獨","padding":[{"syllable":"ㄍㄨㄢ","tone":1},{"syllable":"ㄍㄨㄚ","tone":3},{"syllable":"ㄍㄨ","tone":1},{"syllable":"ㄉㄨ","tone":2}],"difficulty":4}
+{"schemaVersion":1,"license":"CC-BY-4.0","context":"你曉得這件事嗎？","answer":"曉得","padding":[{"syllable":"ㄒㄧㄠ","tone":3},{"syllable":"ㄉㄜ","tone":2}],"difficulty":1}
