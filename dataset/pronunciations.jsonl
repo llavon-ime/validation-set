@@ -19,3 +19,4 @@
 {"schemaVersion":1,"license":"CC-BY-4.0","kind":"pronunciation","answer":"意思","readings":[[{"syllable":"ㄧ","tone":4}],[{"syllable":"ㄙ","tone":1},{"syllable":"ㄙ","tone":5}]],"description":""}
 {"schemaVersion":1,"license":"CC-BY-4.0","kind":"pronunciation","answer":"鑰匙","readings":[[{"syllable":"ㄧㄠ","tone":4}],[{"syllable":"ㄕ","tone":3},{"syllable":"ㄕ","tone":5}]],"description":""}
 {"schemaVersion":1,"license":"CC-BY-4.0","kind":"pronunciation","answer":"載入","readings":[[{"syllable":"ㄗㄞ","tone":3},{"syllable":"ㄗㄞ","tone":4}],[{"syllable":"ㄖㄨ","tone":4}]],"description":"口語可能會是 三聲 但也有人會唸 四聲"}
+{"schemaVersion":1,"license":"CC-BY-4.0","kind":"pronunciation","answer":"署","readings":[[{"syllable":"ㄕㄨ","tone":3},{"syllable":"ㄕㄨ","tone":4}]],"description":"我發現只要是 \"署\" 其實大家都念三聲 但字典多是四聲，如部署 簽署"}
